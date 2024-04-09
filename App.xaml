@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<Application
+    x:Class="Project_CS412.App"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:syncfusion="clr-namespace:Syncfusion.Maui.DataGrid;assembly=Syncfusion.Maui.DataGrid"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Resources/Styles/Colors.xaml" />
+                <ResourceDictionary Source="Resources/Styles/Styles.xaml" />
+
+                <ResourceDictionary>
+                    <Style TargetType="syncfusion:DataGridCell">
+                        <Setter Property="TextAlignment" Value="Center" />
+                        <Setter Property="FontFamily" Value="AileronSansRegular" />
+                    </Style>
+                    <Style TargetType="syncfusion:DataGridHeaderCell">
+                        <Setter Property="TextAlignment" Value="Center" />
+                        <Setter Property="FontFamily" Value="AileronSansSemibold" />
+                    </Style>
+                </ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

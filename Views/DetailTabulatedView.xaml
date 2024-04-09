@@ -1,0 +1,168 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<ContentPage
+    BackgroundColor="#131230"
+    x:Class="Project_CS412.Views.DetailTabulatedView"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:syncfusion="clr-namespace:Syncfusion.Maui.DataGrid;assembly=Syncfusion.Maui.DataGrid"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+
+    <StackLayout>
+        <VerticalStackLayout
+            Padding="30,30"
+            Spacing="25"
+            VerticalOptions="Center">
+
+            <HorizontalStackLayout HorizontalOptions="Center">
+                <Label
+                    FontAttributes="Bold"
+                    FontSize="32"
+                    HorizontalOptions="Center"
+                    SemanticProperties.HeadingLevel="Level1"
+                    Text="Detail View" />
+                <Label
+                    FontSize="32"
+                    HorizontalOptions="Center"
+                    SemanticProperties.HeadingLevel="Level1"
+                    Text=" - Item Picking ID: " />
+                <Label
+                    FontAttributes="Bold"
+                    FontSize="32"
+                    HorizontalOptions="Center"
+                    SemanticProperties.HeadingLevel="Level1"
+                    Text="{Binding SelectedItemPicking.Id, StringFormat=' {0}'}" />
+            </HorizontalStackLayout>
+
+            <HorizontalStackLayout HorizontalOptions="Center" Spacing="10">
+                <Label
+                    FontSize="20"
+                    HorizontalOptions="Fill"
+                    SemanticProperties.HeadingLevel="Level3"
+                    Text="Search: " />
+                <SearchBar
+                    HorizontalOptions="Fill"
+                    MaximumWidthRequest="400"
+                    MinimumWidthRequest="200"
+                    TextChanged="OnSearch"
+                    x:Name="searchBar" />
+            </HorizontalStackLayout>
+
+            <HorizontalStackLayout
+                HorizontalOptions="Center"
+                MaximumWidthRequest="400"
+                Spacing="20">
+                <Button Clicked="OnCreate" Text="Create" />
+                <Button
+                    BackgroundColor="#FA5D3B"
+                    Clicked="OnDelete"
+                    IsEnabled="False"
+                    Text="Delete"
+                    TextColor="WhiteSmoke"
+                    x:Name="DeleteButton" />
+            </HorizontalStackLayout>
+
+            <Border
+                HorizontalOptions="Center"
+                Stroke="Transparent"
+                StrokeShape="RoundRectangle 10,10,10,10"
+                StrokeThickness="2"
+                VerticalOptions="Start">
+                <syncfusion:SfDataGrid
+                    AllowEditing="True"
+                    AlternationRowCount="2"
+                    AutoGenerateColumnsMode="None"
+                    BackgroundColor="WhiteSmoke"
+                    CurrentCellEndEdit="OnEditCell"
+                    GridLinesVisibility="Both"
+                    HeaderGridLinesVisibility="Both"
+                    ItemsSource="{Binding ItemPickingLines}"
+                    SelectionChanged="OnSelectionChanged"
+                    SelectionMode="Single"
+                    SortingMode="Single"
+                    VerticalOptions="Center"
+                    x:Name="dataGrid">
+                    <syncfusion:SfDataGrid.DefaultStyle>
+                        <syncfusion:DataGridStyle HeaderRowFontAttributes="Bold" />
+                    </syncfusion:SfDataGrid.DefaultStyle>
+                    <syncfusion:SfDataGrid.Columns>
+                        <syncfusion:DataGridTextColumn
+                            AllowEditing="False"
+                            HeaderText="ID"
+                            MappingName="Id">
+                            <syncfusion:DataGridTextColumn.CellStyle>
+                                <Style TargetType="syncfusion:DataGridCell">
+                                    <Setter Property="FontFamily" Value="AileronSansRegular" />
+                                    <Setter Property="TextAlignment" Value="Center" />
+                                    <Setter Property="Background" Value="#E5E6F7" />
+                                </Style>
+                            </syncfusion:DataGridTextColumn.CellStyle>
+                        </syncfusion:DataGridTextColumn>
+                        <syncfusion:DataGridTextColumn
+                            AllowEditing="False"
+                            HeaderText="Item Picking ID"
+                            MappingName="ItemPickingId">
+                            <syncfusion:DataGridTextColumn.CellStyle>
+                                <Style TargetType="syncfusion:DataGridCell">
+                                    <Setter Property="FontFamily" Value="AileronSansRegular" />
+                                    <Setter Property="TextAlignment" Value="Center" />
+                                    <Setter Property="Background" Value="#E5E6F7" />
+                                </Style>
+                            </syncfusion:DataGridTextColumn.CellStyle>
+                        </syncfusion:DataGridTextColumn>
+                        <syncfusion:DataGridComboBoxColumn
+                            HeaderText="Item Order Line ID"
+                            ItemsSource="{Binding ItemOrderLineIdsComboBox}"
+                            MappingName="ItemOrderLineId" />
+                        <syncfusion:DataGridComboBoxColumn
+                            HeaderText="Item Package ID"
+                            ItemsSource="{Binding ItemPackageIdsComboBox}"
+                            MappingName="ItemPkgId" />
+                        <syncfusion:DataGridComboBoxColumn
+                            HeaderText="Store POS ID"
+                            ItemsSource="{Binding StorePosIdsComboBox}"
+                            MappingName="StorePosCid" />
+                        <syncfusion:DataGridNumericColumn
+                            AllowEditing="False"
+                            HeaderText="Quantity Total"
+                            MappingName="QtyAvailable">
+                            <syncfusion:DataGridTextColumn.CellStyle>
+                                <Style TargetType="syncfusion:DataGridCell">
+                                    <Setter Property="FontFamily" Value="AileronSansRegular" />
+                                    <Setter Property="TextAlignment" Value="Center" />
+                                    <Setter Property="Background" Value="#E5E6F7" />
+                                </Style>
+                            </syncfusion:DataGridTextColumn.CellStyle>
+                        </syncfusion:DataGridNumericColumn>
+                        <syncfusion:DataGridNumericColumn HeaderText="Quantity Picked" MappingName="QtyInUnit" />
+                        <syncfusion:DataGridNumericColumn
+                            AllowEditing="False"
+                            HeaderText="Quantity Remaining"
+                            MappingName="QtyRemaining">
+                            <syncfusion:DataGridTextColumn.CellStyle>
+                                <Style TargetType="syncfusion:DataGridCell">
+                                    <Setter Property="FontFamily" Value="AileronSansRegular" />
+                                    <Setter Property="TextAlignment" Value="Center" />
+                                    <Setter Property="Background" Value="#E5E6F7" />
+                                </Style>
+                            </syncfusion:DataGridTextColumn.CellStyle>
+                        </syncfusion:DataGridNumericColumn>
+                    </syncfusion:SfDataGrid.Columns>
+                </syncfusion:SfDataGrid>
+            </Border>
+
+            <HorizontalStackLayout
+                HorizontalOptions="Center"
+                MaximumWidthRequest="400"
+                Spacing="20">
+                <Button Clicked="OnSave" Text="Save" />
+                <Button
+                    BackgroundColor="#FA5D3B"
+                    Clicked="OnRefresh"
+                    Text="Reset"
+                    TextColor="WhiteSmoke" />
+            </HorizontalStackLayout>
+
+        </VerticalStackLayout>
+    </StackLayout>
+
+</ContentPage>

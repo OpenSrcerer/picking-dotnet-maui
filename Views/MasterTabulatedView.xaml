@@ -1,0 +1,165 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    BackgroundColor="#242340"
+    x:Class="Project_CS412.Views.MasterTabulatedView"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:syncfusion="clr-namespace:Syncfusion.Maui.DataGrid;assembly=Syncfusion.Maui.DataGrid"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+
+    <StackLayout>
+        <VerticalStackLayout
+            Padding="30,30"
+            Spacing="25"
+            VerticalOptions="Center">
+
+            <HorizontalStackLayout HorizontalOptions="Center" Spacing="20">
+                <Button
+                    BackgroundColor="#8300c4"
+                    Clicked="OnLookupItemOrderLine"
+                    IsEnabled="True"
+                    Text="Item Order Lines"
+                    TextColor="WhiteSmoke" />
+                <Button
+                    BackgroundColor="#8300c4"
+                    Clicked="OnLookupItemOrder"
+                    IsEnabled="True"
+                    Text="Item Orders"
+                    TextColor="WhiteSmoke" />
+                <Button
+                    BackgroundColor="#8300c4"
+                    Clicked="OnLookupItemPkg"
+                    IsEnabled="True"
+                    Text="ItemPkg"
+                    TextColor="WhiteSmoke" />
+                <Button
+                    BackgroundColor="#8300c4"
+                    Clicked="OnLookupStorePos"
+                    IsEnabled="True"
+                    Text="Store POSes"
+                    TextColor="WhiteSmoke" />
+                <Button
+                    BackgroundColor="#8300c4"
+                    Clicked="OnLookupStore"
+                    IsEnabled="True"
+                    Text="Stores"
+                    TextColor="WhiteSmoke" />
+                <Button
+                    BackgroundColor="#f9c901"
+                    Clicked="OnLookupVatClasses"
+                    IsEnabled="True"
+                    Text="VAT Classes"
+                    TextColor="Black" />
+            </HorizontalStackLayout>
+
+            <Label
+                FontAttributes="Bold"
+                FontSize="32"
+                HorizontalOptions="Center"
+                SemanticProperties.HeadingLevel="Level1"
+                Text="Picking ERP: Master View" />
+
+            <HorizontalStackLayout HorizontalOptions="Center" Spacing="10">
+                <Label
+                    FontSize="20"
+                    HorizontalOptions="Fill"
+                    SemanticProperties.HeadingLevel="Level3"
+                    Text="Search: " />
+                <SearchBar
+                    HorizontalOptions="Fill"
+                    MaximumWidthRequest="400"
+                    MinimumWidthRequest="200"
+                    TextChanged="OnSearch"
+                    x:Name="searchBar" />
+            </HorizontalStackLayout>
+
+            <HorizontalStackLayout
+                HorizontalOptions="Center"
+                MaximumWidthRequest="400"
+                Spacing="20">
+                <Button
+                    BackgroundColor="#898CC7"
+                    Clicked="OnSelect"
+                    IsEnabled="False"
+                    Text="Select"
+                    TextColor="WhiteSmoke"
+                    x:Name="SelectButton" />
+                <Button Clicked="OnCreate" Text="Create" />
+                <Button
+                    BackgroundColor="#FAB096"
+                    Clicked="OnDelete"
+                    IsEnabled="False"
+                    Text="Delete"
+                    TextColor="WhiteSmoke"
+                    x:Name="DeleteButton" />
+            </HorizontalStackLayout>
+
+            <Border
+                HorizontalOptions="Center"
+                Stroke="Transparent"
+                StrokeShape="RoundRectangle 10,10,10,10"
+                StrokeThickness="2"
+                VerticalOptions="Start">
+                <syncfusion:SfDataGrid
+                    AllowEditing="True"
+                    AlternationRowCount="2"
+                    AutoGenerateColumnsMode="None"
+                    BackgroundColor="WhiteSmoke"
+                    ColumnWidthMode="FitByHeader"
+                    GridLinesVisibility="Both"
+                    HeaderGridLinesVisibility="Both"
+                    ItemsSource="{Binding ItemPickings}"
+                    SelectionChanged="OnSelectionChanged"
+                    SelectionMode="Single"
+                    SortingMode="Single"
+                    VerticalOptions="Center"
+                    x:Name="dataGrid">
+                    <syncfusion:SfDataGrid.DefaultStyle>
+                        <syncfusion:DataGridStyle HeaderRowFontFamily="AileronSansSemibold" />
+                    </syncfusion:SfDataGrid.DefaultStyle>
+                    <syncfusion:SfDataGrid.Columns>
+                        <syncfusion:DataGridNumericColumn
+                            AllowEditing="False"
+                            Format="0"
+                            HeaderText="ID"
+                            MappingName="Id">
+                            <syncfusion:DataGridTextColumn.CellStyle>
+                                <Style TargetType="syncfusion:DataGridCell">
+                                    <Setter Property="FontFamily" Value="AileronSansRegular" />
+                                    <Setter Property="TextAlignment" Value="Center" />
+                                    <Setter Property="Background" Value="#E5E6F7" />
+                                </Style>
+                            </syncfusion:DataGridTextColumn.CellStyle>
+                        </syncfusion:DataGridNumericColumn>
+                        <syncfusion:DataGridComboBoxColumn
+                            Format="0"
+                            HeaderText="Item Order ID"
+                            ItemsSource="{Binding ItemOrderIdsComboBox}"
+                            MappingName="ItemOrderId" />
+                        <syncfusion:DataGridComboBoxColumn
+                            Format="0"
+                            HeaderText="Vat Class ID"
+                            ItemsSource="{Binding VatClassIdsComboBox}"
+                            MappingName="VatClassId" />
+                        <syncfusion:DataGridDateColumn HeaderText="Picking Start Date" MappingName="PickingStartDatetime" />
+                        <syncfusion:DataGridDateColumn HeaderText="Picking End Date" MappingName="PickingEndDatetime" />
+                        <!-- <dataGrid:DataGridTextColumn HeaderText="Name" MappingName="Customer" /> -->
+                    </syncfusion:SfDataGrid.Columns>
+                </syncfusion:SfDataGrid>
+            </Border>
+
+            <HorizontalStackLayout
+                HorizontalOptions="Center"
+                MaximumWidthRequest="400"
+                Spacing="20">
+                <Button Clicked="OnSave" Text="Save" />
+                <Button
+                    BackgroundColor="#FA5D3B"
+                    Clicked="OnRefresh"
+                    Text="Reset"
+                    TextColor="WhiteSmoke" />
+            </HorizontalStackLayout>
+
+        </VerticalStackLayout>
+    </StackLayout>
+
+</ContentPage>

@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<ContentPage
+    BackgroundColor="#131230"
+    x:Class="Project_CS412.Views.ItemPkgView"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:syncfusion="clr-namespace:Syncfusion.Maui.DataGrid;assembly=Syncfusion.Maui.DataGrid"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+
+    <StackLayout>
+        <VerticalStackLayout
+            Padding="30,30"
+            Spacing="25"
+            VerticalOptions="Center">
+
+            <Label
+                FontAttributes="Bold"
+                FontSize="32"
+                HorizontalOptions="Center"
+                SemanticProperties.HeadingLevel="Level1"
+                Text="Picking ERP: Lookup View - ItemPkg" />
+
+            <Border
+                HorizontalOptions="Center"
+                Stroke="Transparent"
+                StrokeShape="RoundRectangle 10,10,10,10"
+                StrokeThickness="2"
+                VerticalOptions="Start">
+                <syncfusion:SfDataGrid
+                    AllowEditing="True"
+                    AlternationRowCount="2"
+                    AutoGenerateColumnsMode="None"
+                    BackgroundColor="WhiteSmoke"
+                    ColumnWidthMode="FitByCell"
+                    GridLinesVisibility="Both"
+                    HeaderGridLinesVisibility="Both"
+                    ItemsSource="{Binding ItemPkgs}"
+                    SelectionMode="Single"
+                    SortingMode="Single"
+                    VerticalOptions="Center"
+                    x:Name="dataGrid">
+                    <syncfusion:SfDataGrid.DefaultStyle>
+                        <syncfusion:DataGridStyle HeaderRowFontAttributes="Bold" />
+                    </syncfusion:SfDataGrid.DefaultStyle>
+                    <syncfusion:SfDataGrid.Columns>
+                        <syncfusion:DataGridTextColumn
+                            AllowEditing="False"
+                            HeaderText="ID"
+                            MappingName="Id">
+                            <syncfusion:DataGridTextColumn.CellStyle>
+                                <Style TargetType="syncfusion:DataGridCell">
+                                    <Setter Property="FontFamily" Value="AileronSansRegular" />
+                                    <Setter Property="TextAlignment" Value="Center" />
+                                    <Setter Property="Background" Value="#E5E6F7" />
+                                </Style>
+                            </syncfusion:DataGridTextColumn.CellStyle>
+                        </syncfusion:DataGridTextColumn>
+                        <syncfusion:DataGridTextColumn
+                            AllowEditing="False"
+                            HeaderText="Barcode"
+                            MappingName="Barcode">
+                            <syncfusion:DataGridTextColumn.CellStyle>
+                                <Style TargetType="syncfusion:DataGridCell">
+                                    <Setter Property="FontFamily" Value="AileronSansRegular" />
+                                    <Setter Property="TextAlignment" Value="Center" />
+                                    <Setter Property="Background" Value="#E5E6F7" />
+                                </Style>
+                            </syncfusion:DataGridTextColumn.CellStyle>
+                        </syncfusion:DataGridTextColumn>
+                        <syncfusion:DataGridTextColumn
+                            AllowEditing="False"
+                            HeaderText="Serial Number"
+                            MappingName="SerialNum">
+                            <syncfusion:DataGridTextColumn.CellStyle>
+                                <Style TargetType="syncfusion:DataGridCell">
+                                    <Setter Property="FontFamily" Value="AileronSansRegular" />
+                                    <Setter Property="TextAlignment" Value="Center" />
+                                    <Setter Property="Background" Value="#E5E6F7" />
+                                </Style>
+                            </syncfusion:DataGridTextColumn.CellStyle>
+                        </syncfusion:DataGridTextColumn>
+                    </syncfusion:SfDataGrid.Columns>
+                </syncfusion:SfDataGrid>
+            </Border>
+
+        </VerticalStackLayout>
+    </StackLayout>
+
+</ContentPage>

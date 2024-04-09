@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<ContentPage
+    x:Class="Project_CS412.Views.EasterEggView"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+    <ScrollView>
+        <VerticalStackLayout
+            Padding="30,0"
+            Spacing="25"
+            VerticalOptions="Center">
+
+            <Label
+                FontSize="32"
+                HorizontalOptions="Center"
+                SemanticProperties.HeadingLevel="Level1"
+                Text="Yeya dooood! Whooooo~~!" />
+
+            <Image
+                HeightRequest="250"
+                HorizontalOptions="Center"
+                SemanticProperties.Description="Mordecai and Rigby"
+                Source="mordecai_and_rigby.png" />
+
+            <Button
+                Clicked="GoBack_OnClicked"
+                HorizontalOptions="Center"
+                Text="I hate this, go back!" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
